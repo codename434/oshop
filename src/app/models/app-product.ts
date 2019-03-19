@@ -1,6 +1,11 @@
-export interface AppProduct{
-    title: string,
-    price:number,
-    category: string,
-    imageUrl:string
+export interface ProductKeyValue{
+    key : string;
+    value : Product;
+}
+
+export interface Product {
+    title: string;
+    price:number;
+    category: string;
+    imageUrl:string;
 }
