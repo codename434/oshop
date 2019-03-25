@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ProductService } from '../product.service';
-import { CategoryService } from '../category.service';
 import { ActivatedRoute } from '@angular/router';
 import { ProductKeyValue } from '../models/app-product';
 
@@ -12,13 +11,12 @@ import { ProductKeyValue } from '../models/app-product';
 export class ProductsComponent {
   products : ProductKeyValue[] = [];
   filteredProducts : ProductKeyValue[] = [];
-  categories$;
+  
   category : string;
 
   constructor(
     route: ActivatedRoute,
-    productService : ProductService, 
-    categoryService : CategoryService) 
+    productService : ProductService) 
     { 
     productService.getAll().subscribe((products : ProductKeyValue[]) => { 
       this.products = products;
@@ -31,8 +29,5 @@ export class ProductsComponent {
           this.products;
       });
     });
-
-    this.categories$ = categoryService.getCategories();
   }
-
 }
