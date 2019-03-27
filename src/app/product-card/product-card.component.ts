@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { NgbInputDatepicker } from '@ng-bootstrap/ng-bootstrap';
-import { ProductKeyValue } from '../models/app-product';
+import { Product } from '../models/app-product';
 
 @Component({
   selector: 'product-card',
@@ -8,8 +7,12 @@ import { ProductKeyValue } from '../models/app-product';
   styleUrls: ['./product-card.component.css']
 })
 export class ProductCardComponent {
-  @Input('product') product: ProductKeyValue;
+  @Input('product') product: Product;
   @Input('show-actions') showActions = true;
 
   constructor() { }
+
+  addToCart(product : Product ){
+    
+  }
 }
