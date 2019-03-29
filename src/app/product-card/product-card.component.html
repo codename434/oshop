@@ -1,9 +1,9 @@
-<div *ngIf="product.title" class="card">
-  <img class="card-img-top" src="{{product.imageUrl}}" 
-      *ngIf="product.imageUrl" alt="{{ product.title }}">
+<div *ngIf="product.value.title" class="card">
+  <img class="card-img-top" src="{{product.value.imageUrl}}" 
+      *ngIf="product.value.imageUrl" alt="{{ product.value.title }}">
   <div class="card-body">
-    <h4 class="card-title">{{ product.title }}</h4>
-    <p class="card-text">{{ product.price | currency : 'USD' : true }}</p>
+    <h4 class="card-title">{{ product.value.title }}</h4>
+    <p class="card-text">{{ product.value.price | currency : 'USD' : 'symbol' }}</p>
   </div>
   <div class="card-footer">
     <button 

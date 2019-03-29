@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Product } from '../models/app-product';
+import { ProductKeyValue } from '../models/app-product';
 
 @Component({
   selector: 'product-card',
@@ -7,12 +7,12 @@ import { Product } from '../models/app-product';
   styleUrls: ['./product-card.component.css']
 })
 export class ProductCardComponent {
-  @Input('product') product: Product;
+  @Input('product') product: ProductKeyValue;
   @Input('show-actions') showActions = true;
 
   constructor() { }
 
-  addToCart(product : Product ){
+  addToCart(product : ProductKeyValue ){
     
   }
 }
