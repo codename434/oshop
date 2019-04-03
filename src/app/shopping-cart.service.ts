@@ -7,7 +7,7 @@ import { ProductKeyValue } from './models/app-product';
   providedIn: 'root'
 })
 export class ShoppingCartService {
-
+  
   constructor(private db: AngularFireDatabase) { }
 
   private create(){
@@ -16,8 +16,9 @@ export class ShoppingCartService {
     });
   }
 
-  private getCart(cartId: string){
-    this.db.object('/shopping-carts/' + cartId).valueChanges();
+  async getCart(){
+    let cartId = await this.getOrCreateCartId();
+    return this.db.object('/shopping-carts/' + cartId).snapshotChanges(); 
   }
 
 
