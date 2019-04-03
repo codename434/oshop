@@ -7,7 +7,7 @@ import { ProductKeyValue } from './models/app-product';
   providedIn: 'root'
 })
 export class ShoppingCartService {
-  
+
   constructor(private db: AngularFireDatabase) { }
 
   private create(){
@@ -53,5 +53,17 @@ export class ShoppingCartService {
         });
       }
     })
+  }
+
+  async removeFromCart(product : ProductKeyValue){
+    let cartId = await this.getOrCreateCartId();
+    let items$ = this.getItem(cartId, product.key);
+
+    items$.snapshotChanges().pipe(take(1)).subscribe((item: any) => {
+      this.getItem(cartId, product.key).update({
+        product: product.value,
+        quantity: (item.payload.val().quantity) - 1
+      });
+    });
   }
 }
