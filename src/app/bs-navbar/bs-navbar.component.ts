@@ -25,7 +25,7 @@ export class BsNavbarComponent implements OnInit {
       for(let productId in cart.payload.val().items){
         this.shoppingCartItemCount += cart.payload.val().items[productId].quantity;
       }
-    })
+    });
   }
 
   logout(){
