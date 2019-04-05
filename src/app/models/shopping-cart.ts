@@ -1,4 +1,5 @@
 import { ShoppingCartItem } from './shopping-cart-item';
+import { ProductKeyValue } from './app-product';
 
 
 export class ShoppingCart {
@@ -9,6 +10,10 @@ export class ShoppingCart {
             let item = itemsMap[productId];
             this.items.push(new ShoppingCartItem(item.product, item.quantity));
         }
+    }
+    getQuantity(product : ProductKeyValue) {
+        let item = this.itemsMap[product.key];
+        return item ? item.quantity : 0;
     }
 
     get totalPrice(){
