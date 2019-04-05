@@ -5,7 +5,7 @@ import { ProductKeyValue } from './app-product';
 export class ShoppingCart {
     items: ShoppingCartItem[] = [];
 
-    constructor(public itemsMap) {
+    constructor(private itemsMap) {
         this.itemsMap = this.itemsMap || {};
 
         for(let productId in itemsMap){
