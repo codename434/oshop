@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { ShoppingCartService } from './shopping-cart.service';
+import { retry } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -13,5 +14,9 @@ export class OrderService {
     let result = await this.db.list('/orders').push(order);
     this.shoppingCartService.clearCart();
     return result;
+  }
+
+  getOrders(){
+    return this.db.list('/orders').snapshotChanges();
   }
 }

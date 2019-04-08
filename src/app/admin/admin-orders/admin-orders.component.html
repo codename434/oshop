@@ -1,3 +1,20 @@
-<p>
-  admin-orders works!
-</p>
+<h1>Orders</h1>
+<div *ngIf="orders$ | async as orders">
+  {{ orders | json }}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Customer</th>
+        <th>Date</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders">
+        <td>{{ order.payload.val().shipping.name }}</td>
+        <td>{{ order.payload.val().datePlaced | date}}</td>
+        <td><a href="#">View</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
