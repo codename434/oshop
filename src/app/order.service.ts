@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { ShoppingCartService } from './shopping-cart.service';
-import { retry } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +17,11 @@ export class OrderService {
 
   getOrders(){
     return this.db.list('/orders').snapshotChanges();
+  }
+
+  getOrdersByUserId(userId:string) {
+    return this.db.list('/orders', (ref) => {
+      return ref.orderByChild('userId').equalTo(userId);
+    }).snapshotChanges();
   }
 }
