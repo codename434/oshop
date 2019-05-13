@@ -8,6 +8,7 @@ import { AdminOrdersComponent } from './component/admin-orders/admin-orders.comp
 import { AdminProductsComponent } from './component/admin-products/admin-products.component';
 import { ProductFormComponent } from './component/product-form/product-form.component';
 import { AdminAuthGuard } from './services/admin-auth-guard.service';
+import { SharedModule } from 'shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -16,8 +17,7 @@ import { AdminAuthGuard } from './services/admin-auth-guard.service';
     AdminOrdersComponent,
   ],
   imports: [
-    CommonModule,
-    FormsModule,
+    SharedModule,
     RouterModule.forChild([
       { 
         path:'admin/products/new', 
